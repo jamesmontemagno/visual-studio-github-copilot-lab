@@ -1,6 +1,15 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject IJSRuntime JS
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">TinyShop</a>
+        <button class="theme-toggle-button"
+                type="button"
+                title="Toggle theme"
+                aria-label="Toggle theme"
+                @onclick="ToggleTheme">
+            @(isDarkTheme ? "☀️" : "🌙")
+        </button>
     </div>
 </div>
 
@@ -19,5 +28,26 @@
                 <span class="bi bi-list-nested" aria-hidden="true"></span> Products
             </NavLink>
         </div>
+
+        @code {
+            private bool isDarkTheme;
+
+            protected override async Task OnAfterRenderAsync(bool firstRender)
+            {
+                if (firstRender)
+                {
+                    var preferredTheme = await JS.InvokeAsync<string>("tinyShopTheme.getPreferredTheme");
+                    isDarkTheme = preferredTheme == "dark";
+                    await JS.InvokeVoidAsync("tinyShopTheme.applyTheme", preferredTheme);
+                    StateHasChanged();
+                }
+            }
+
+            private async Task ToggleTheme()
+            {
+                isDarkTheme = !isDarkTheme;
+                await JS.InvokeVoidAsync("tinyShopTheme.applyTheme", isDarkTheme ? "dark" : "light");
+            }
+        }
     </nav>
 </div>

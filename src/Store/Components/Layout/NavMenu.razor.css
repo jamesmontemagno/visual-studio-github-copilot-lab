@@ -3,25 +3,28 @@
     cursor: pointer;
     width: 3.5rem;
     height: 2.5rem;
-    color: white;
+    color: var(--theme-navbar-text);
     position: absolute;
     top: 0.5rem;
     right: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") no-repeat center/1.75rem rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--theme-navbar-border);
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") no-repeat center/1.75rem var(--theme-navbar-toggler-bg);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .navbar-toggler:checked {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--theme-navbar-toggler-bg-active);
 }
 
 .top-row {
     height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
+    background-color: var(--theme-navbar-bg);
+    transition: background-color 0.3s ease;
 }
 
 .navbar-brand {
     font-size: 1.1rem;
+    color: var(--theme-navbar-text);
 }
 
 .bi {
@@ -60,7 +63,7 @@
     }
 
     .nav-item ::deep a {
-        color: #d7d7d7;
+        color: var(--theme-navbar-link);
         border-radius: 4px;
         height: 3rem;
         display: flex;
@@ -69,13 +72,27 @@
     }
 
 .nav-item ::deep a.active {
-    background-color: rgba(255,255,255,0.25);
-    color: white;
+    background-color: var(--theme-navbar-link-active-bg);
+    color: var(--theme-navbar-text);
 }
 
 .nav-item ::deep a:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
+    background-color: var(--theme-navbar-link-hover-bg);
+    color: var(--theme-navbar-text);
+}
+
+.theme-toggle-button {
+    border: 1px solid var(--theme-navbar-border);
+    background-color: transparent;
+    color: var(--theme-navbar-text);
+    border-radius: 0.5rem;
+    padding: 0.35rem 0.6rem;
+    line-height: 1;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.theme-toggle-button:hover {
+    background-color: var(--theme-navbar-link-hover-bg);
 }
 
 .nav-scrollable {

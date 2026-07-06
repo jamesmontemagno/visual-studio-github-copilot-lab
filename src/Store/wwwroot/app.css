@@ -1,5 +1,52 @@
+:root {
+    --theme-bg: #f7f9fc;
+    --theme-text: #1f2937;
+    --theme-link: #0d6efd;
+    --theme-border: #d7dce4;
+    --theme-card-bg: #ffffff;
+    --theme-button-bg: #1b6ec2;
+    --theme-button-border: #1861ac;
+    --theme-form-bg: #ffffff;
+    --theme-form-text: #1f2937;
+    --theme-form-border: #c8d0dc;
+    --theme-sidebar-bg: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    --theme-navbar-bg: rgba(0, 0, 0, 0.4);
+    --theme-navbar-text: #ffffff;
+    --theme-navbar-link: #d7d7d7;
+    --theme-navbar-link-active-bg: rgba(255, 255, 255, 0.25);
+    --theme-navbar-link-hover-bg: rgba(255, 255, 255, 0.1);
+    --theme-navbar-border: rgba(255, 255, 255, 0.2);
+    --theme-navbar-toggler-bg: rgba(255, 255, 255, 0.1);
+    --theme-navbar-toggler-bg-active: rgba(255, 255, 255, 0.5);
+}
+
+:root[data-theme='dark'] {
+    --theme-bg: #111827;
+    --theme-text: #e5e7eb;
+    --theme-link: #93c5fd;
+    --theme-border: #374151;
+    --theme-card-bg: #1f2937;
+    --theme-button-bg: #2563eb;
+    --theme-button-border: #1d4ed8;
+    --theme-form-bg: #111827;
+    --theme-form-text: #e5e7eb;
+    --theme-form-border: #4b5563;
+    --theme-sidebar-bg: linear-gradient(180deg, #0b1220 0%, #1f2937 70%);
+    --theme-navbar-bg: rgba(17, 24, 39, 0.95);
+    --theme-navbar-text: #f9fafb;
+    --theme-navbar-link: #d1d5db;
+    --theme-navbar-link-active-bg: rgba(147, 197, 253, 0.25);
+    --theme-navbar-link-hover-bg: rgba(147, 197, 253, 0.15);
+    --theme-navbar-border: rgba(147, 197, 253, 0.4);
+    --theme-navbar-toggler-bg: rgba(147, 197, 253, 0.2);
+    --theme-navbar-toggler-bg-active: rgba(147, 197, 253, 0.35);
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1:focus {
@@ -7,13 +54,15 @@ h1:focus {
 }
 
 a, .btn-link {
-    color: #0071c1;
+    color: var(--theme-link);
+    transition: color 0.3s ease;
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: var(--theme-button-bg);
+    border-color: var(--theme-button-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -22,6 +71,24 @@ a, .btn-link {
 
 .content {
     padding-top: 1.1rem;
+}
+
+.card {
+    background-color: var(--theme-card-bg);
+    color: var(--theme-text);
+    border-color: var(--theme-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+input,
+select,
+textarea,
+.form-control,
+.form-select {
+    background-color: var(--theme-form-bg);
+    color: var(--theme-form-text);
+    border-color: var(--theme-form-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .valid.modified:not([type=checkbox]) {
